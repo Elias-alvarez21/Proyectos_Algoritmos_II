@@ -31,9 +31,15 @@ class PersonasController extends Controller
     public function create()
     {
         $areas=DB::table("areas")
-        ->select("areas.*")->get();
-        //return view("save", compact("areas"));
-        return view("components.container",compact("areas"));
+        ->select("areas.area_Id","areas.area_nombre")->get();
+        return view("save", compact("areas"));
+
+         
+        $Areas=$areas->map(function($area){
+                    return ["id"=>$area->area_Id,"nombre"=>$area->area_nombre];
+                })->toArray();
+
+        //return view("Personas.main-form",compact("Areas"));
     }
 
     /**

@@ -8,16 +8,19 @@ use Illuminate\View\Component;
 
 class inputform extends Component
 {
-    public $value;
+    
     public $type;
     public $name;
     public $leyenda;
+    public $label;
+    public $value;
 
-    public function __construct($type,$name,$label,$value=0)
+    public function __construct($type,$name,$leyenda,$label,$value=0)
     {
         
         $this->type=$type;
         $this->name=$name;
+        $this->leyenda=$leyenda;
         $this->label=$label;
         $this->value=$value;
     }

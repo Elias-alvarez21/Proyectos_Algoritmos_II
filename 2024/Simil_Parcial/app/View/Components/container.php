@@ -8,12 +8,14 @@ use Illuminate\View\Component;
 
 class container extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    public $m;
+    public $a;
+    public $areas;
+    public function __construct($m, $a, $areas)
     {
-        //
+        $this->m = $m;
+        $this->a = $a;
+        $this->areas = $areas;
     }
 
     /**

@@ -68,15 +68,15 @@
                         <BR>
                         {{-- MEDIANTE UN IF HACER FUNCIONAR LO DE ABAJO --}}
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="Activo" name=Estado {{ (($L->estado)=="Activo")?"checked": "" }}>
+                            <input class="form-check-input" type="radio" value="Activo" name=Estado {{ ((isset($L->estado))=="Activo")?"checked": "" }}>
                             <label class="form-check-label" for="Activo">Activo</label>
                           </div>
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="Baja" name=Estado {{ (($L->estado)=="Baja")?"checked": "" }}>
+                            <input class="form-check-input" type="radio" value="Baja" name=Estado {{ ((isset($L->estado))=="Baja")?"checked": "" }}>
                             <label class="form-check-label" for="Baja">Baja</label>
                           </div>
                           <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" value="Jubilado" name=Estado {{ (($L->estado)=="Jubilado")?"checked": "" }}>
+                            <input class="form-check-input" type="radio" value="Jubilado" name=Estado {{ ((isset($L->estado))=="Jubilado")?"checked": "" }}>
                             <label class="form-check-label" for="Jubilado">Jubilado</label>
                           </div>
                 </div>
