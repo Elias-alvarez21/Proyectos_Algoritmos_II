@@ -16,6 +16,10 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                
+                                @php session_start();
+                                $_SESSION["email"]=old('email');
+                                @endphp
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
