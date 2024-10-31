@@ -2,7 +2,7 @@
     <tr>
         <td>
           {{-- @dd($L) --}}
-           <form action="{{route('ventas.index', $libro->libroId)}}" method="GET">
+           <form action="{{route('ventas.show', $libro->libroId)}}" method="GET">
             <button type="submit" class="btn btn-outline-secondary btn-sm">
               <i class="fas fa-edit"> Ventas</i>
             </button>
@@ -20,6 +20,7 @@
               </button>
             </form> 
             <form action="{{route('libros.delete', $libro->libroId)}}" method="GET">
+              @csrf   @method("DELETE")
               <button type="submit" class="btn btn-outline-danger btn-sm">
                   Eliminar
               </button>

@@ -10,11 +10,9 @@ class VentasController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index($id)
+    public function index()
     {
-        #$ventaXid=Ventas::find($id);
-        $ventaXid=Ventas::where("libro_Id",$id)->get();
-        return view("VentaXid",["id"=>$id,"venta"=>$ventaXid]);
+
     }
 
     /**
@@ -38,7 +36,9 @@ class VentasController extends Controller
      */
     public function show(string $id)
     {
-
+        #$ventaXid=Ventas::find($id);
+        $ventaXid=Ventas::where("libro_Id",$id)->get();
+        return view("VentaXid",["id"=>$id,"venta"=>$ventaXid]);
     }
 
     /**

@@ -11,7 +11,7 @@ Route::post("/cargLibro",[LibrosController::class,"store"])->name("libros.store"
 Route::get("/editLibro/{id}",[LibrosController::class,"edit"])->name("libros.edit");
 #Route::get("/editLIbro/update",[LibrosController::class,"update"])->name("libros.update");
 Route::get("/elimLibro{id}",[LibrosController::class,"destroy"])->name("libros.delete");
-Route::get("/ventLibro{id}",[VentasController::class,"index"])->name("ventas.index");
+Route::get("/ventLibro{id}",[VentasController::class,"show"])->name("ventas.show");
 
 Route::get("/tp3",[TP3Controller::class,"query"]);
 #Route::get("/categIndex",[CategoriasController::class,"index"])->name("categ.index");
