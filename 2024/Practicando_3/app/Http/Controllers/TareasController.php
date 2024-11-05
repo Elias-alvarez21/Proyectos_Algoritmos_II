@@ -62,7 +62,9 @@ class TareasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        
+        DB::update("UPDATE tareas SET  User_Id={$request->usuario_id}, descripcion='{$request->descripcion}', alta='{$request->alta}'
+                    ,prioridad={$request->prioridad},vencimiento='{$request->vencimiento}, estado={{$request->estado}' WHERE tareas={$request->tareaId}");
+        return redirect()->route("tareas.index");
     }
 
     /**
