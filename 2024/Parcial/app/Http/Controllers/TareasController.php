@@ -4,14 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Auth; 
+
 
 class TareasController extends Controller
 {
     
-    public function __construct(){
-        $this->middleware("auth");
-    }
+    // public function __construct(){
+    //     $this->middleware("auth");
+    // }
     public function index()
     {
         $all=DB::Table("tareas")->join("Users","users.id","=","tareas.User_Id")
@@ -44,7 +44,7 @@ class TareasController extends Controller
     {
         //var_dump($request);
         $T=DB::insert("INSERT INTO tareas (User_Id,descripcion,alta,prioridad,vencimiento,estado) 
-        VALUES ({$request->usuario},'{$request->descripcion}','{$request->alta}',{$request->prioridad},'{$request->vencimiento}','{$request->estado}')");
+        VALUES ({$request->usuario},'{$request->descripcion}','{}',{$request->prioridad},'{$request->vencimiento}','{$request->estado}')");
         return redirect()->route("tareas.index");
     }
 

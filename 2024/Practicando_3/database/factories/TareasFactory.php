@@ -19,10 +19,10 @@ class TareasFactory extends Factory
         return [
             "usuario_Id"=>$this->faker->numberBetween(1,2),
             "prioridad"=>$this->faker->numberBetween(1,10),
-            "descripcion"=>$this->faker->text(),
+            "descripcion"=>$this->faker->name(),
             "vencimiento"=>$this->faker->date(),
             "alta"=>$this->faker->date(),
-            "estado"=>$this->faker->enum(["pending","finished","expired"])
+            "estado"=>$this->faker->randomElement(["pending","finished","expired"])
         ];
     }
 }

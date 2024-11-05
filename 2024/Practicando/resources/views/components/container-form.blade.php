@@ -24,6 +24,7 @@ $optionsCateg = [
 <div class="container" style="width: 50%;">
     <form method="{{ $m }}" action="{{ isset($libro) ? route('libros.store') : $a }}">{{--  UTILIZO SINTAXIS .blade EN VEZ DE php --}}
         @csrf
+        @php dd($optionsAutores); @endphp
         <x-input-form leyenda="" tipo="hidden" name="libroId" id="{{ $id }}"/>
         <x-input-form leyenda="Título" tipo="text" name="titulo" />
         <x-select-form leyenda="Autores" name="autores_Id" :options="$optionsAutores"/>{{-- :options="{{ isset($libro) ? $libEditAut : $optionsAutores }}" --}}

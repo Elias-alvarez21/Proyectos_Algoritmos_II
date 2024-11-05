@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\{DB,Auth};
 
 class TareasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
     public function index()
     {
-        $T=DB::select("SELECT * FROM tareas");
-        return view("components.t-head",compact("T"));
+        $T=DB::select("SELECT u.name, t.* FROM tareas t INNER JOIN users u ON u.id=t.usuario_Id 
+                        ORDER BY t.tareaId");
+        //$T = collect($T)->map(function ($item) { return (object) $item; })->all();
+        return view("Tareas.table",compact("T"));
         //FALTA EL LAYOUT.BLADE.PHP
 
     }
@@ -23,7 +26,7 @@ class TareasController extends Controller
      */
     public function create()
     {
-        
+        return view("Tareas.store");
     }
 
     /**
@@ -31,7 +34,9 @@ class TareasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        DB::insert("INSERT INTO tareas (usuario_Id,prioridad,descripcion,vencimiento,alta,estado)
+        VALUES ({$request->usuario_id},{$request->prioridad},'{$request->descripcion}','{$request->vencimiento}','{$request->alta}','{$request->estado}')");
+        return redirect()->route("tareas.index");
     }
 
     /**
@@ -47,7 +52,9 @@ class TareasController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $T=DB::select("SELECT * FROM tareas WHERE TareaId={$id} LIMIT 1");//ACORDATE DE ESTA VERGA
+        return view("Tareas.store",compact("T"));
+
     }
 
     /**
@@ -55,7 +62,7 @@ class TareasController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        
     }
 
     /**
@@ -63,6 +70,7 @@ class TareasController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        DB::delete("DELETE FROM tareas WHERE TareaId={$id}");
+        return redirect()->route("tareas.index");
     }
 }
