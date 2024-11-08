@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PARCIAL - ALGORITMOS Y ESTRUCTURAS DE DATOS II</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h5 class="center-align">Asignación de RRHH / Áreas</h5>
+
+    <div class="row">
+        <a class="btn modal-trigger" href="#infoModal">Información</a>
+    </div>
+
+    <table class="highlight">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>RRHH</th>
+                <th>Fecha</th>
+                <th>Área</th>
+                <th>Habilitado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>
+                    <select>
+                        <option value="1" selected>Alan Turing</option>
+                        <option value="2">Grace Hopper</option>
+                        <option value="3">Tim Berners-Lee</option>
+                        <option value="4">Ada Lovelace</option>
+                        <option value="5">Linus Torvalds</option>
+                        <option value="6">Steve Jobs</option>
+                        <option value="7">Bill Gates</option>
+                        <option value="8">Margaret Hamilton</option>
+                        <option value="9">Mark Zuckerberg</option>
+                        <option value="10">Elon Musk</option>
+                    </select>
+                </td>
+                <td><input type="date" value="2020-10-10" /></td>
+                <td>
+                    <select>
+                        <option value="desarrollo" selected>Desarrollo</option>
+                        <option value="investigacion">Investigación</option>
+                        <option value="innovacion">Innovación</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="ventas">Ventas</option>
+                        <option value="soporte">Soporte</option>
+                        <option value="finanzas">Finanzas</option>
+                        <option value="recursos_humanos">Recursos Humanos</option>
+                        <option value="administracion">Administración</option>
+                        <option value="estrategia">Estrategia</option>
+                    </select>
+                </td>
+                <td>
+                    <label>
+                        <input type="checkbox" checked />
+                        <span></span>
+                    </label>
+                </td>
+                <td>
+                    <button class="btn-small orange">Editar</button>
+                    <button class="btn-small red">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>
+                    <select>
+                        <option value="2" selected>Grace Hopper</option>
+                        <option value="1">Alan Turing</option>
+                        <option value="3">Tim Berners-Lee</option>
+                        <option value="4">Ada Lovelace</option>
+                        <option value="5">Linus Torvalds</option>
+                        <option value="6">Steve Jobs</option>
+                        <option value="7">Bill Gates</option>
+                        <option value="8">Margaret Hamilton</option>
+                        <option value="9">Mark Zuckerberg</option>
+                        <option value="10">Elon Musk</option>
+                    </select>
+                </td>
+                <td><input type="date" value="2017-07-07" /></td>
+                <td>
+                    <select>
+                        <option value="ventas" selected>Ventas</option>
+                        <option value="desarrollo">Desarrollo</option>
+                        <option value="investigacion">Investigación</option>
+                        <option value="innovacion">Innovación</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="soporte">Soporte</option>
+                        <option value="finanzas">Finanzas</option>
+                        <option value="recursos_humanos">Recursos Humanos</option>
+                        <option value="administracion">Administración</option>
+                        <option value="estrategia">Estrategia</option>
+                    </select>
+                </td>
+                <td>
+                    <label>
+                        <input type="checkbox" />
+                        <span></span>
+                    </label>
+                </td>
+                <td>
+                    <button class="btn-small orange">Editar</button>
+                    <button class="btn-small red">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>
+                    <select>
+                        <option value="3" selected>Tim Berners-Lee</option>
+                        <option value="1">Alan Turing</option>
+                        <option value="2">Grace Hopper</option>
+                        <option value="4">Ada Lovelace</option>
+                        <option value="5">Linus Torvalds</option>
+                        <option value="6">Steve Jobs</option>
+                        <option value="7">Bill Gates</option>
+                        <option value="8">Margaret Hamilton</option>
+                        <option value="9">Mark Zuckerberg</option>
+                        <option value="10">Elon Musk</option>
+                    </select>
+                </td>
+                <td><input type="date" value="2023-03-12" /></td>
+                <td>
+                    <select>
+                        <option value="innovacion" selected>Innovación</option>
+                        <option value="desarrollo">Desarrollo</option>
+                        <option value="investigacion">Investigación</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="ventas">Ventas</option>
+                        <option value="soporte">Soporte</option>
+                        <option value="finanzas">Finanzas</option>
+                        <option value="recursos_humanos">Recursos Humanos</option>
+                        <option value="administracion">Administración</option>
+                        <option value="estrategia">Estrategia</option>
+                    </select>
+                </td>
+                <td>
+                    <label>
+                        <input type="checkbox" checked />
+                        <span></span>
+                    </label>
+                </td>
+                <td>
+                    <button class="btn-small orange">Editar</button>
+                    <button class="btn-small red">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>
+                    <select>
+                        <option value="4" selected>Ada Lovelace</option>
+                        <option value="1">Alan Turing</option>
+                        <option value="2">Grace Hopper</option>
+                        <option value="3">Tim Berners-Lee</option>
+                        <option value="5">Linus Torvalds</option>
+                        <option value="6">Steve Jobs</option>
+                        <option value="7">Bill Gates</option>
+                        <option value="8">Margaret Hamilton</option>
+                        <option value="9">Mark Zuckerberg</option>
+                        <option value="10">Elon Musk</option>
+                    </select>
+                </td>
+                <td><input type="date" value="2014-11-24" /></td>
+                <td>
+                    <select>
+                        <option value="recursos_humanos" selected>Recursos Humanos</option>
+                        <option value="desarrollo">Desarrollo</option>
+                        <option value="investigacion">Investigación</option>
+                        <option value="innovacion">Innovación</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="ventas">Ventas</option>
+                        <option value="soporte">Soporte</option>
+                        <option value="finanzas">Finanzas</option>
+                        <option value="administracion">Administración</option>
+                        <option value="estrategia">Estrategia</option>
+                    </select>
+                </td>
+                <td>
+                    <label>
+                        <input type="checkbox" />
+                        <span></span>
+                    </label>
+                </td>
+                <td>
+                    <button class="btn-small orange">Editar</button>
+                    <button class="btn-small red">Eliminar</button>
+                </td>
+            </tr>
+            <tr>
+                <td>5</td>
+                <td>
+                    <select>
+                        <option value="5" selected>Linus Torvalds</option>
+                        <option value="1">Alan Turing</option>
+                        <option value="2">Grace Hopper</option>
+                        <option value="3">Tim Berners-Lee</option>
+                        <option value="4">Ada Lovelace</option>
+                        <option value="6">Steve Jobs</option>
+                        <option value="7">Bill Gates</option>
+                        <option value="8">Margaret Hamilton</option>
+                        <option value="9">Mark Zuckerberg</option>
+                        <option value="10">Elon Musk</option>
+                    </select>
+                </td>
+                <td><input type="date" value="2022-05-01" /></td>
+                <td>
+                    <select>
+                        <option value="desarrollo" selected>Desarrollo</option>
+                        <option value="investigacion">Investigación</option>
+                        <option value="innovacion">Innovación</option>
+                        <option value="marketing">Marketing</option>
+                        <option value="ventas">Ventas</option>
+                        <option value="soporte">Soporte</option>
+                        <option value="finanzas">Finanzas</option>
+                        <option value="recursos_humanos">Recursos Humanos</option>
+                        <option value="administracion">Administración</option>
+                        <option value="estrategia">Estrategia</option>
+                    </select>
+                </td>
+                <td>
+                    <label>
+                        <input type="checkbox" checked />
+                        <span></span>
+                    </label>
+                </td>
+                <td>
+                    <button class="btn-small orange">Editar</button>
+                    <button class="btn-small red">Eliminar</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h5 class="center-align">Agregar Nuevo Registro</h5>
+    <form>
+        <div class="input-field col s12">
+            <select id="rrhh" required>
+                <option value="" disabled selected>Elige un RRHH</option>
+                <option value="1">Alan Turing</option>
+                <option value="2">Grace Hopper</option>
+                <option value="3">Tim Berners-Lee</option>
+                <option value="4">Ada Lovelace</option>
+                <option value="5">Linus Torvalds</option>
+                <option value="6">Steve Jobs</option>
+                <option value="7">Bill Gates</option>
+                <option value="8">Margaret Hamilton</option>
+                <option value="9">Mark Zuckerberg</option>
+                <option value="10">Elon Musk</option>
+            </select>
+            <label>RRHH</label>
+        </div>
+
+        <div class="input-field col s12">
+            <input type="date" id="fecha" required>
+            <label for="fecha">Fecha</label>
+        </div>
+
+        <div class="input-field col s12">
+            <select id="area" required>
+                <option value="" disabled selected>Elige un área</option>
+                <option value="desarrollo">Desarrollo</option>
+                <option value="investigacion">Investigación</option>
+                <option value="innovacion">Innovación</option>
+                <option value="marketing">Marketing</option>
+                <option value="ventas">Ventas</option>
+                <option value="soporte">Soporte</option>
+                <option value="finanzas">Finanzas</option>
+                <option value="recursos_humanos">Recursos Humanos</option>
+                <option value="administracion">Administración</option>
+                <option value="estrategia">Estrategia</option>
+            </select>
+            <label>Área</label>
+        </div>
+
+        <div class="input-field col s12">
+            <p>
+                <label>
+                    <input type="checkbox" id="habilitado" />
+                    <span>Habilitado</span>
+                </label>
+            </p>
+        </div>
+
+        <button class="btn waves-effect waves-light" type="submit">Agregar Registro</button>
+    </form>
+
+    <div id="infoModal" class="modal">
+        <div class="modal-content">
+            <h4>Información</h4>
+            <p>Se asume que un rrhh puede pertenecer a varias áreas y por su parte un área disponer de más de un rrhh. El botón editar actualiza la información que puede modificarse en cada una de las filas.</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Cerrar</a>
+        </div>
+    </div>
+
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var elems = document.querySelectorAll('select');
+        var instances = M.FormSelect.init(elems);
+        var modalElems = document.querySelectorAll('.modal');
+        var modalInstances = M.Modal.init(modalElems);
+    });
+</script>
+</body>
+</html>
+
+
+
+
