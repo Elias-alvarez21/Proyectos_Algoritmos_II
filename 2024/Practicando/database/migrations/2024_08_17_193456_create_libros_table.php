@@ -17,6 +17,7 @@ return new class extends Migration
             $table->unsignedInteger('autor_Id')->nullable(false);
             $table->unsignedInteger('categoria_Id')->nullable(false);
             $table->decimal('precio', 8, 2);
+            $table->string("IMG_ruta", 200)->nullable(true);
             $table->timestamps();
             $table->foreign('autor_Id')->references('autorId')->on('autores')->onDelete('cascade')//LE AGREGUE ESTO 
             ->onUpdate('cascade');

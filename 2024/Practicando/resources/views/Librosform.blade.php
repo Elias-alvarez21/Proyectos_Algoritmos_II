@@ -24,6 +24,6 @@
     </head>
 
     <body>
-        <x-container-form m="POST" a="{{route ('libros.store')}}" :autores=$autores /> 
+        <x-container-form m="POST" a="{{route ('libros.store')}}" :autores=$autores :libro=$libro /> 
     </body>
 </html>

@@ -9,6 +9,9 @@
           </form>
           </td>
             <td>{{$libro->libroId}}</td>
+            <td><div class="card" style="width: 18rem;">
+              <img src="{{ Storage::url("imagenes/".$libro->IMG_ruta) }}" class="card-img-top" alt="Imagen del libro">
+              </div></td>
             <td>{{$libro->titulo}}</td>
             <td>{{$libro->autor_Id}}</td>
             <td>{{$libro->categoria_Id}}</td>

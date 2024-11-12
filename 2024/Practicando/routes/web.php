@@ -7,7 +7,7 @@ use Symfony\Component\HttpKernel\HttpCache\Esi;
 
 Route::get("/libros",[LibrosController::class,"index"])->name("libros.index");
 Route::get("/regLibro",[LibrosController::class,"create"])->name("libros.create");
-Route::post("/cargLibro",[LibrosController::class,"store"])->name("libros.store");
+Route::post("/cargLibro",[LibrosController::class,"storeImg"])->name("libros.store");
 Route::get("/editLibro/{id}",[LibrosController::class,"edit"])->name("libros.edit");
 #Route::get("/editLIbro/update",[LibrosController::class,"update"])->name("libros.update");
 Route::get("/elimLibro{id}",[LibrosController::class,"destroy"])->name("libros.delete");
@@ -25,3 +25,7 @@ Route::get("/subirArchivo",[FilesController::class,"index"])->name("files.index"
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

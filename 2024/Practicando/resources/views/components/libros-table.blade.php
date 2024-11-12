@@ -11,6 +11,7 @@
               <tr>
                 <th></th>
                 <th>ID Libro</th>
+                <th></th>
                 <th>Titulo</th>
                 <th>Autor</th>
                 <th>Categoria</th>

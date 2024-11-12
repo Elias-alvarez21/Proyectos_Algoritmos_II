@@ -11,14 +11,14 @@ class SelectForm extends Component
     public $leyenda;
     public $name;
     public $options;
-    public $option;
+    public $value;
 
-    public function __construct($leyenda, $name, $options,$option)
+    public function __construct($leyenda, $name, $options,$value=null)
     {
         $this->leyenda = $leyenda;
         $this->name = $name;
         $this->options = $options;
-        $this->option=$option;
+        $this->value = $value;
     }
 
     /**

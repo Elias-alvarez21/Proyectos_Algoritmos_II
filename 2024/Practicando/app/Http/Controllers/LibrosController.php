@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\{Libros,Autores,Categorias};
-use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\{DB,Storage};
+use Illuminate\Contracts\Cache\Store;
 
 class LibrosController extends Controller
 {
@@ -13,7 +14,8 @@ class LibrosController extends Controller
      */
     public function index()
     {
-        $libros=Libros::all();
+        //$libros=Libros::all();
+        $libros=DB::select("SELECT * FROM libros");
         return view("Libros",compact("libros"));
     }
 
@@ -22,11 +24,11 @@ class LibrosController extends Controller
      */
     public function create()
     {
-        $autores=Autores::select("autorId","nombre")->get();              //LLAME LOS METODOS DESDE ACA PORQUE NO PODIA INVOCARLOS
-        //$categorias=Categorias::select("categoriaId","nombre")->get(); // MEDIANTE LAS RUTAS Y AL MISMO TIEMPO RETORNARLOS HACIA UNA VISTA
-        return view("Librosform",compact('autores'/*, 'categorias'*/));
+        $libro=null;
+        $autores=Autores::select("autorId","nombre")->get();   
+        //$autores=DB::select("SELECT autorId, nombre FROM autores");
+        return view("Librosform",compact("autores","libro"));
     }
-
     /**
      * Store a newly created resource in storage.
      */
@@ -43,7 +45,25 @@ class LibrosController extends Controller
                      VALUES ('{$request->titulo}',{$request->autores_Id}, {$request->categorias_Id},{$request->precio});");
         return redirect()->route("libros.index");
     }
-
+    public function storeImg(Request $request)
+    {
+        if(isset($request->imagen))
+        {
+            $ruta=Storage::disk("public")->putFile("imagenes",$request->file("imagen"));
+  
+        }else{
+            $ruta=null;
+        }
+        
+        $L=new Libros();
+        $L->titulo=$request->titulo;
+        $L->autor_Id=$request->autores_Id;
+        $L->categoria_Id=$request->categorias_Id;
+        $L->precio=$request->precio;
+        $L->IMG_ruta=$ruta;
+        $L->save();
+        return redirect()->route("libros.index");
+    }
     /**
      * Display the specified resource.
      */
@@ -57,9 +77,10 @@ class LibrosController extends Controller
      */
     public function edit($id)
     {
-        //$editar=Libros::find($id);#where("libroId",$id)->get();
-        $editar=DB::select("SELECT libros.* WHERE libroId={$id}");
-        return view("components.container-form",["libro"=>$editar]);
+        $editar=Libros::find($id);#where("libroId",$id)->get();
+        $autores=Autores::select("autorId","nombre")->get(); 
+        //$editar=DB::select("SELECT libros.* WHERE libroId={$id}");
+        return view("Librosform",["libro"=>$editar,"autores"=>$autores]);
     }
 
     /**
@@ -74,8 +95,15 @@ class LibrosController extends Controller
             $actu->precio=$request->precio;
             $actu->save();
         */
+        if(isset($request->imagen))
+        {
+            $ruta=Storage::disk("public")->putFile("imagenes",$request->file("imagen"));
+  
+        }else{
+            $ruta=null;
+        }
         DB::update("UPDATE libros SET titulo='{$request->titulo}', autor_Id={$request->autores}, categoria_Id={$request->categorias},
-                    precio{$request->precio} WHERE libroId={$id}");
+                    precio{$request->precio}, IMG_ruta='{$ruta}' WHERE libroId={$id}");
         return view("Libros");
     }
 
