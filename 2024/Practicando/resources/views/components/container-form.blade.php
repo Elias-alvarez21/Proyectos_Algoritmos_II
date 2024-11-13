@@ -19,22 +19,22 @@
     ];
 @endphp
 
-<div class="container" style="width: 50%;">
-    <form method="{{ $m }}" action="{{ isset($libro) ? route('libros.store') : $a }}" enctype="multipart/form-data">{{--  UTILIZO SINTAXIS .blade EN VEZ DE php --}}
-        @csrf 
-        @if(isset($libro))
-         @method("PUT")
-         <x-input-form leyenda="" tipo="hidden" name="libroId" value="{{$libro->libroId}}"/>
-         @endif
-        
-        <x-input-form leyenda="Título" tipo="text" name="titulo"  value="{{(isset($libro))?$libro->titulo:" "}}" />
-        <x-select-form leyenda="Autores" name="autores_Id" :options="$optionsAutores"  />{{-- :options="{{ isset($libro) ? $libEditAut : $optionsAutores }}" --}}
-        <x-select-form leyenda="Categorías" name="categorias_Id" :options="$optionsCateg" />
-        <x-input-form leyenda="Precio" tipo="number" name="precio"  value="{{(isset($libro)?$libro->precio:" ")}}" /><br>
-        <div class="card" style="width: 18rem;">
-            <img src="{{ (isset($libro->IMG_ruta))?Storage::url("imagenes/".$libro->IMG_ruta):" " }}" class="card-img-top" alt="Imagen actual">
-        </div> <br>
-        <x-input-imagen leyenda="Suba una imagen:" tipo="file" nombre="imagen" /><br>
-        <button type="submit" class="btn btn-outline-warning">ACEPTAR</button>
-    </form>
+<div class="container" style="width: 50%;"> 
+    <form method="POST" action="{{ isset($libro) ? route('libros.update', $libro->libroId) : $a }}" enctype="multipart/form-data"> 
+        @csrf @if(isset($libro)) @method("PUT") 
+            <x-input-form leyenda="" tipo="hidden" name="libroId" value="{{ $libro->libroId }}"/> 
+         @endif 
+        <x-input-form leyenda="Título" tipo="text" name="titulo" value="{{ isset($libro) ? $libro->titulo : '' }}" /> 
+        <x-select-form leyenda="Autores" name="autores" :options="$optionsAutores" /> 
+        <x-select-form leyenda="Categorías" name="categorias" :libro=$libro :options="$optionsCateg" /> 
+        <x-input-form leyenda="Precio" tipo="number" name="precio" :libro=$libro value="{{ isset($libro) ? $libro->precio : '' }}" /><br> 
+        <div class="card" style="width: 18rem;"> 
+            @if (isset($libro->IMG_ruta)) 
+                <img src="{{ Storage::url($libro->IMG_ruta) }}" class="card-img-top" alt="Imagen actual"> 
+                @else <p>No hay imagen disponible</p> 
+            @endif 
+        </div><br> 
+        <x-input-imagen leyenda="Suba una imagen:" tipo="file" nombre="imagen" /><br> 
+        <button type="submit" class="btn btn-outline-warning">ACEPTAR</button> 
+    </form> 
 </div>

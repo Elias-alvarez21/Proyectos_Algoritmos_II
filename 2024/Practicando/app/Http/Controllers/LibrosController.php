@@ -15,7 +15,9 @@ class LibrosController extends Controller
     public function index()
     {
         //$libros=Libros::all();
-        $libros=DB::select("SELECT * FROM libros");
+        $libros=DB::select("SELECT l.*, a.nombre AS autor, c.nombre AS categoria FROM libros l
+                INNER JOIN autores a ON a.autorId = l.autor_Id INNER JOIN categorias c ON c.categoriaId = l.categoria_Id
+                ORDER BY l.libroId ASC");
         return view("Libros",compact("libros"));
     }
 
@@ -57,8 +59,8 @@ class LibrosController extends Controller
         
         $L=new Libros();
         $L->titulo=$request->titulo;
-        $L->autor_Id=$request->autores_Id;
-        $L->categoria_Id=$request->categorias_Id;
+        $L->autor_Id=$request->autores;
+        $L->categoria_Id=$request->categorias;
         $L->precio=$request->precio;
         $L->IMG_ruta=$ruta;
         $L->save();
@@ -103,8 +105,8 @@ class LibrosController extends Controller
             $ruta=null;
         }
         DB::update("UPDATE libros SET titulo='{$request->titulo}', autor_Id={$request->autores}, categoria_Id={$request->categorias},
-                    precio{$request->precio}, IMG_ruta='{$ruta}' WHERE libroId={$id}");
-        return view("Libros");
+                    precio={$request->precio}, IMG_ruta='{$ruta}' WHERE libroId={$id}");
+        return redirect()->route("libros.index");
     }
 
     /**
@@ -112,7 +114,9 @@ class LibrosController extends Controller
      */
     public function destroy(string $id)
     {
-        $L=DB::delete("DELETE FROM libros WHERE libroId={$id}");
+        $libro = Libros::findOrFail($id);
+        if ($libro->IMG_ruta) { Storage::disk('public')->delete($libro->IMG_ruta); }
+        $libro->delete();
         return redirect()->route("libros.index");
     }
 }

@@ -6,11 +6,14 @@ use Symfony\Component\HttpKernel\HttpCache\Esi;
 
 
 Route::get("/libros",[LibrosController::class,"index"])->name("libros.index");
+
 Route::get("/regLibro",[LibrosController::class,"create"])->name("libros.create");
 Route::post("/cargLibro",[LibrosController::class,"storeImg"])->name("libros.store");
+
 Route::get("/editLibro/{id}",[LibrosController::class,"edit"])->name("libros.edit");
-#Route::get("/editLIbro/update",[LibrosController::class,"update"])->name("libros.update");
-Route::get("/elimLibro{id}",[LibrosController::class,"destroy"])->name("libros.delete");
+Route::put("/editLIbro/update{id}",[LibrosController::class,"update"])->name("libros.update");
+
+Route::delete("/elimLibro{id}",[LibrosController::class,"destroy"])->name("libros.delete");
 Route::get("/ventLibro{id}",[VentasController::class,"show"])->name("ventas.show");
 
 Route::get("/tp3",[TP3Controller::class,"query"]);

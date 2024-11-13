@@ -12,10 +12,7 @@
                 <th></th>
                 <th>ID Libro</th>
                 <th></th>
-                <th>Titulo</th>
-                <th>Autor</th>
-                <th>Categoria</th>
-                <th>Precio</th>
+                <th>Info</th>
                 <th>BOTONES</th>
               </tr>
             </thead>
@@ -23,19 +20,6 @@
              @foreach ($libros as $libro)
              {{-- @dd($L) --}}
                 <x-libros-row :libro=$libro />
-                          {{-- <form action="{{route('libros.edit',[$L->libroId])}}" method="GET">
-                          <button type="submit" class="btn btn-outline-primary btn-sm">
-                            Editar
-                          </button>
-                        </form> 
-                        {{-- <form action="{{route('libros.delete', $L->libroId)}}" method="GET">
-                          <button type="submit" class="btn btn-outline-danger btn-sm">
-                              Eliminar
-                          </button>
-                        </form>
-                      </div>
-                      </td>
-                    </tr> --}}
               @endforeach
             </tbody>
           </table>

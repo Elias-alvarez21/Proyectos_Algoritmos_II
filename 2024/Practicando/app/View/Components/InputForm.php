@@ -12,7 +12,7 @@ class InputForm extends Component
     public $tipo;
     public $name;
     public $value;
-    public function __construct($leyenda, $tipo, $name,$value=0)
+    public function __construct($leyenda, $tipo, $name,$value="")
     {
         $this->leyenda = $leyenda;
         $this->tipo = $tipo;
