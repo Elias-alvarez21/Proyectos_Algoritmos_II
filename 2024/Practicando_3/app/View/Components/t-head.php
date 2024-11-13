@@ -8,12 +8,12 @@ use Illuminate\View\Component;
 
 class thead extends Component
 {
-    
-    public $T;
-    
-    public function __construct($T)
+    /**
+     * Create a new component instance.
+     */
+    public function __construct()
     {
-        $this->T=$T;
+        //
     }
 
     /**

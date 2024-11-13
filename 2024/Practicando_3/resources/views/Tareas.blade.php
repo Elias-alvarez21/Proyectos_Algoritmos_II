@@ -1,4 +1,4 @@
-@extends("welcome")
+@extends("layout")
 @section("content")
-    <x-t-head :T=$T /> 
+    
 @endsection

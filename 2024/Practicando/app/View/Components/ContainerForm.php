@@ -14,7 +14,7 @@ class ContainerForm extends Component
     public $a;
     public $autores;//para la foranea que se necesita para crear un libro
     public $libro;
-    public function __construct($m,$a,$autores,$libro=null)
+    public function __construct($m,$a,$autores,$libro=0)
     {
         $this->m = $m;//method
         $this->a = $a;//action

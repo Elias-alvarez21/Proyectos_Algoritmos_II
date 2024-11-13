@@ -27,13 +27,13 @@
          <x-input-form leyenda="" tipo="hidden" name="libroId" value="{{$libro->libroId}}"/>
          @endif
         
-        <x-input-form leyenda="Título" tipo="text" name="titulo"  value="{{$libro->titulo}}"/>
+        <x-input-form leyenda="Título" tipo="text" name="titulo"  value="{{(isset($libro))?$libro->titulo:" "}}" />
         <x-select-form leyenda="Autores" name="autores_Id" :options="$optionsAutores"  />{{-- :options="{{ isset($libro) ? $libEditAut : $optionsAutores }}" --}}
         <x-select-form leyenda="Categorías" name="categorias_Id" :options="$optionsCateg" />
-        <x-input-form leyenda="Precio" tipo="number" name="precio"  value="{{$libro->precio}}" /><br>
+        <x-input-form leyenda="Precio" tipo="number" name="precio"  value="{{(isset($libro)?$libro->precio:" ")}}" /><br>
         <div class="card" style="width: 18rem;">
-            <img src="{{ Storage::url("imagenes/".$libro->IMG_ruta) }}" class="card-img-top" alt="Imagen actual">
-        </div> 
+            <img src="{{ (isset($libro->IMG_ruta))?Storage::url("imagenes/".$libro->IMG_ruta):" " }}" class="card-img-top" alt="Imagen actual">
+        </div> <br>
         <x-input-imagen leyenda="Suba una imagen:" tipo="file" nombre="imagen" /><br>
         <button type="submit" class="btn btn-outline-warning">ACEPTAR</button>
     </form>

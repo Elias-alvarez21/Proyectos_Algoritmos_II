@@ -23,9 +23,8 @@ Route::get("/subirArchivo",[FilesController::class,"index"])->name("files.index"
 
 
 
-
-
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
