@@ -17,7 +17,7 @@ class VentasFactory extends Factory
     public function definition(): array
     {
         return [
-            "libro_Id"=>$this->faker->numberBetween(1,100),
+            "libro_Id"=>$this->faker->numberBetween(1,10),
             "fecha"=>$this->faker->dateTime(),
             "total"=>$this->faker->randomFloat(2)
         ];

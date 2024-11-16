@@ -15,7 +15,6 @@ return new class extends Migration
             $table->integerIncrements('autorId');
             $table->string('nombre', 100)->nullable(false);
             $table->string('nacionalidad', 100)->nullable(false);
-            $table->string("IMG_ruta_aut", 200)->nullable(true);
             $table->timestamps();
         });
     }

@@ -22,11 +22,9 @@
                 Editar
               </button>
             </form><br>
-            <form action="{{route('libros.delete', $libro->libroId)}}" method="POST ">
+            <form action="{{route('libros.delete',$libro->libroId)}}" method="POST">
               @csrf   @method("DELETE")
-              <button type="submit" class="btn btn-outline-danger btn-sm">
-                  Eliminar
-              </button>
+              <button type="submit" class="btn btn-outline-danger btn-sm">Eliminar</button>
             </form>
           </div>
           </td>

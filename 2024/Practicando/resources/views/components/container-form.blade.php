@@ -1,10 +1,4 @@
 @php
-    $optionsAutores = $autores->map(function($autor) {
-        // Este código toma una colección de autores y la transforma en un arreglo de opciones,
-        // donde cada opción tiene un value (el ID del autor) y un texto (el nombre del autor).
-        // Este arreglo es útil para poblar un <select> en un formulario HTML.
-        return ['value' => $autor->autorId, 'texto' => $autor->nombre];
-    })->toArray();
     // $libEditAut = $libro->map(function ($idAut) {
     //     return ['value' => $idAut->autor_Id,'texto'=>$idAut->];
     // })->toArray();

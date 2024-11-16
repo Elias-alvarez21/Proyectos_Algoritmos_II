@@ -18,7 +18,7 @@ class LibrosFactory extends Factory
     {
         return [
              "titulo"=>$this->faker->sentence(),
-             "autor_Id"=>$this->faker->numberBetween(1,50),
+             "autor_Id"=>$this->faker->numberBetween(1,20),
              "categoria_Id"=>$this->faker->numberBetween(1,6),
              "precio"=>$this->faker->randomFloat(2, 5, 100)      
             

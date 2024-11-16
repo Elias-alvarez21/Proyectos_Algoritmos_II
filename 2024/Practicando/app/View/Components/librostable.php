@@ -8,11 +8,14 @@ use Illuminate\View\Component;
 
 class librostable extends Component
 {
-    public $libros;
-    
-    public function __construct($libros)
+    public $array;
+    // public $Tabla;
+    public $tipo;
+    public function __construct($array,$tipo)
     {
-        $this->libros=$libros;
+        $this->array=$array;
+        // $this->Tabla=$Tabla;
+        $this->tipo=$tipo;
     }
 
     /**

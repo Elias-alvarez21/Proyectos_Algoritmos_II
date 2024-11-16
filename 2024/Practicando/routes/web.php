@@ -5,7 +5,7 @@ use App\Http\Controllers\{AutoresController,CategoriasController,LibrosControlle
 use Symfony\Component\HttpKernel\HttpCache\Esi;
 
 
-Route::get("/libros",[LibrosController::class,"index"])->name("libros.index");
+Route::get("/",[LibrosController::class,"index"])->name("libros.index");
 
 Route::get("/regLibro",[LibrosController::class,"create"])->name("libros.create");
 Route::post("/cargLibro",[LibrosController::class,"storeImg"])->name("libros.store");
@@ -24,7 +24,7 @@ Route::get("/tp3",[TP3Controller::class,"query"]);
 Route::get("/autores",[AutoresController::class,"index"])->name("autores.index");
 Route::get("/subirArchivo",[FilesController::class,"index"])->name("files.index");
 
-
+Route::get("/ventas",[VentasController::class,"index"])->name("ventas.index");
 
 Auth::routes();
 

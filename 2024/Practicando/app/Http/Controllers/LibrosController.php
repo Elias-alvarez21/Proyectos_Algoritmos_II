@@ -9,16 +9,20 @@ use Illuminate\Contracts\Cache\Store;
 
 class LibrosController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+    
+    public function __construct()
+    {
+        //$this->middleware("auth")->only("index");
+        $this->middleware("Rol");
+    }
     public function index()
     {
         //$libros=Libros::all();
-        $libros=DB::select("SELECT l.*, a.nombre AS autor, c.nombre AS categoria FROM libros l
+        $array=DB::select("SELECT l.*, a.nombre AS autor, c.nombre AS categoria FROM libros l
                 INNER JOIN autores a ON a.autorId = l.autor_Id INNER JOIN categorias c ON c.categoriaId = l.categoria_Id
                 ORDER BY l.libroId ASC");
-        return view("Libros",compact("libros"));
+        $ident="libros";
+        return view("Tabla",compact("array", "ident"));
     }
 
     /**
@@ -29,7 +33,15 @@ class LibrosController extends Controller
         $libro=null;
         $autores=Autores::select("autorId","nombre")->get();   
         //$autores=DB::select("SELECT autorId, nombre FROM autores");
-        return view("Librosform",compact("autores","libro"));
+        $optionsAutores = $autores->map(function($autor) {
+            // Este código toma una colección de autores y la transforma en un arreglo de opciones,
+            // donde cada opción tiene un value (el ID del autor) y un texto (el nombre del autor).
+            // Este arreglo es útil para poblar un <select> en un formulario HTML.
+            return ['value' => $autor->autorId, 'texto' => $autor->nombre];
+        })->toArray();
+        // $libEditAut
+        $ident="libros";
+        return view("Librosform",compact("optionsAutores","libro","ident"));
     }
     /**
      * Store a newly created resource in storage.
@@ -114,8 +126,11 @@ class LibrosController extends Controller
      */
     public function destroy(string $id)
     {
-        $libro = Libros::findOrFail($id);
-        if ($libro->IMG_ruta) { Storage::disk('public')->delete($libro->IMG_ruta); }
+        $libro = Libros::find($id);
+        if ($libro->IMG_ruta)
+        {  
+            Storage::disk('public')->delete($libro->IMG_ruta); 
+        }
         $libro->delete();
         return redirect()->route("libros.index");
     }

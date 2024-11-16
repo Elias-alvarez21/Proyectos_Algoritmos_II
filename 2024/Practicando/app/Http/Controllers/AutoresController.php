@@ -15,8 +15,9 @@ class AutoresController extends Controller
         // $autores=Autores::select("autorId","nombre")->get();//REALICE ESTE SELECT DESDE EL CONTROLADOR Libros PORQUE NO PODIA INVOCAR AL METODO INDEX EN NINGUNA RUTA
         // return view("librosform",["aut"=>$autores]);
 
-        $autores=Autores::all();
-        return view("autores", ["autores"=>$autores]);
+        $array=Autores::all();
+        $ident="autores";
+        return view("Tabla", compact("array", "ident"));
     }
 
     /**

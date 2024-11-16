@@ -4,15 +4,22 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Ventas;
+use Illuminate\Support\Facades\DB;
 
 class VentasController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
+
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
+    
     public function index()
     {
-
+        $array=DB::select("SELECT v.*,l.titulo FROM ventas v 
+        INNER JOIN libros l ON v.libro_Id=l.libroId ORDER BY v.ventaId ASC");
+        $ident="ventas";
+        return view("Tabla",compact("array", "ident"));
     }
 
     /**
