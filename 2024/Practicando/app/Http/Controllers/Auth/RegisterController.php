@@ -5,8 +5,9 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\{Hash,Log};
 use Illuminate\Support\Facades\Validator;
+use App\Events\UsuarioRegistrado;//<- EVENTO
 
 class RegisterController extends Controller
 {
@@ -70,6 +71,8 @@ class RegisterController extends Controller
         $U->email=$data['email'];
         $U->password=Hash::make($data['password']);
         $U->save();
+        event(new UsuarioRegistrado($U));
+        Log::info('Creando nuevo usuario con los siguientes datos DESDE EL CONTROLADOR RegisterController: ', $data);
         return $U;
     }
 }

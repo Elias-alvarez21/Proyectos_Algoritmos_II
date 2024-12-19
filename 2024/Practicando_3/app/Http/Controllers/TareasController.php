@@ -16,7 +16,7 @@ class TareasController extends Controller
         $T=DB::select("SELECT u.name, t.* FROM tareas t INNER JOIN users u ON u.id=t.usuario_Id 
                         ORDER BY t.tareaId");
         //$T = collect($T)->map(function ($item) { return (object) $item; })->all();
-        return view("Tareas.table",["T"=>$T]);
+        return view("Tareas.table",compact("T"));
         //FALTA EL LAYOUT.BLADE.PHP
 
     }

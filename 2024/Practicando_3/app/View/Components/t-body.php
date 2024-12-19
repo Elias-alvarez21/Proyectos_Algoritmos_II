@@ -8,12 +8,11 @@ use Illuminate\View\Component;
 
 class tbody extends Component
 {
-    /**
-     * Create a new component instance.
-     */
-    public function __construct()
+    
+    public $tar;
+    public function __construct($tar)
     {
-        //
+        $this->tar=$tar;
     }
 
     /**

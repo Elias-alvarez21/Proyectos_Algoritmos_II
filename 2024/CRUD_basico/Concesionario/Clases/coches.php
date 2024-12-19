@@ -17,9 +17,6 @@ class Coches{
         $this->modelo=$modelo;
         $this->color=$color;
         $this->precio=$precio;
-
-        //createCoches();
-        
     }
     
     public static function getCoches(){
@@ -33,23 +30,11 @@ class Coches{
     {
         try {
             $db = Conexion::Connect();
-            $sth = $db->prepare("INSERT INTO coches (matricula, marca, modelo, color, precio) VALUES (:matricula, :marca, :modelo, :color, :precio)");
-            
-            // Enlaza los valores de los parámetros
-            $sth->bindParam(':matricula', $this->matricula);
-            $sth->bindParam(':marca', $this->marca);
-            $sth->bindParam(':modelo', $this->modelo);
-            $sth->bindParam(':color', $this->color);
-            $sth->bindParam(':precio', $this->precio);
-    
-            // Ejecuta la consulta
+            $sth = $db->prepare("INSERT INTO coches (matricula, marca, modelo, color, precio) VALUES ('$this->matricula','$this->marca','$this->modelo','$this->color,','$this->precio')");
             $sth->execute();
-    
-            // Redirige después de la inserción
             header("Location: ../coches.php");
             return true;
         } catch (Exception $e) {
-            // Muestra el mensaje de error
             echo "Surgió un error en createCoches: {$e->getMessage()}";
         }
     }
@@ -59,18 +44,7 @@ class Coches{
     {
         try {
             $db = Conexion::Connect();
-            // Preparar la sentencia SQL usando placeholders
-            $sth = $db->prepare("UPDATE coches SET matricula = :matricula, marca = :marca, modelo = :modelo, color = :color, precio = :precio WHERE idcoche = :id");
-    
-            // Asignar los valores a los placeholders
-            $sth->bindParam(':matricula', $this->matricula, PDO::PARAM_STR);
-            $sth->bindParam(':marca', $this->marca, PDO::PARAM_STR);
-            $sth->bindParam(':modelo', $this->modelo, PDO::PARAM_STR);
-            $sth->bindParam(':color', $this->color, PDO::PARAM_STR);
-            $sth->bindParam(':precio', $this->precio, PDO::PARAM_INT);
-            $sth->bindParam(':id', $this->id, PDO::PARAM_INT);
-    
-            // Ejecutar la consulta
+            $sth = $db->prepare("UPDATE coches SET matricula = '$this->matricula', marca = '$this->marca', modelo = '$this->modelo', color = '$this->color', precio = '$this->precio' WHERE idcoche = '$this->id'");
             $sth->execute();
             header("Location: ../coches.php");
         } catch (Exception $e) {
@@ -98,11 +72,11 @@ class Coches{
     {
         try{
             $db=Conexion::Connect();
-            $sth=$db->query("DELETE FROM coches WHERE idcoche={$id}");
+            $db->query("DELETE FROM coches WHERE idcoche='$id'");
             header("Location: ../coches.php");
             return true;
         }catch(Exception $e){
-            echo "surgió un error en deleteCoches({$e->getMessage()})";
+            echo "surgió un error en coches::deleteCoches ({$e->getMessage()})";
             var_dump($id);
         }
     }

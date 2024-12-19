@@ -4,23 +4,21 @@ class Login {
     // private int $id;
     // private string $nombre;
     private string $correo;
-    private string $contraseña;
+    private string $contra;
 
-    public function __construct($correo,$contraseña)
+    public function __construct($correo,$contra)
      {
-        //  $this->id = $id;
-        //  $this->nombre = $nombre;
          $this->correo = $correo;
-         $this->contraseña = $contraseña;
+         $this->contra = $contra;
      }
 
      public static function login($correo, $contraseña) {
-        $usuario = array();
+        $usuario = array();//No es necesario declararlo porque se declara con el TIPADO FLEXIBLE
         try {
             $conexion = Conexion::Connect();
-            $sth = $conexion->prepare("SELECT id FROM usuarios WHERE correo = :correo AND contraseña = :contraseña LIMIT 1");
-            $sth->bindParam(':correo', $correo);
-            $sth->bindParam(':contraseña', $contraseña);
+            $sth = $conexion->prepare("SELECT id FROM usuarios WHERE email = '$correo' AND password = '$contraseña' LIMIT 1");
+            // $sth->bindParam(':correo', $correo);
+            // $sth->bindParam(':contraseña', $contraseña);
             $sth->execute();
             $usuario = $sth->fetchAll(PDO::FETCH_OBJ); // Usar PDO::FETCH_OBJ para obtener objetos
             

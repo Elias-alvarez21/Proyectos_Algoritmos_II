@@ -17,7 +17,7 @@ class VentasController extends Controller
     public function index()
     {
         $array=DB::select("SELECT v.*,l.titulo FROM ventas v 
-        INNER JOIN libros l ON v.libro_Id=l.libroId ORDER BY v.ventaId ASC");
+        INNER JOIN libros l ON v.libro_Id=l.libroId ORDER BY v.ventaId ASC"); 
         $ident="ventas";
         return view("Tabla",compact("array", "ident"));
     }

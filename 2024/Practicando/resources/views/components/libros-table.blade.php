@@ -27,7 +27,7 @@
              {{-- @dd($L) --}}
              
             @if($tipo =="libros")
-              <x-libros-row :libro=$a />               
+              <x-libros-row :libro=$a />{{-- BUSCAR EN LA DOCUMENTACION: atributo corto dentro del componente --}}
             @elseif ($tipo == "autores")
               <x-autores-row :autor=$a />
             @else

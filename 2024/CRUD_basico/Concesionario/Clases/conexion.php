@@ -4,7 +4,7 @@ class Conexion
     private static $db;
     private static $user = 'root';
     private static $password = '';
-    private static $host = '127.0.0.1:33065';
+    private static $host = '127.0.0.1:3307';
     private static $database = 'ejercicio6';
 
     public static function Connect()

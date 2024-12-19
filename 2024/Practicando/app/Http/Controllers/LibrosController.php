@@ -17,6 +17,8 @@ class LibrosController extends Controller
     }
     public function index()
     {
+        $frutas = array("manzana", "banana", "pera");
+        $persona = array( "nombre" => "Juan", "apellido" => "Pérez", "edad" => 30);
         //$libros=Libros::all();
         $array=DB::select("SELECT l.*, a.nombre AS autor, c.nombre AS categoria FROM libros l
                 INNER JOIN autores a ON a.autorId = l.autor_Id INNER JOIN categorias c ON c.categoriaId = l.categoria_Id

@@ -8,19 +8,21 @@ use Illuminate\Support\Facades\DB;
 
 class PersonasController extends Controller
 {
-    // public function __construct()
-    // {
-    //     $this->middleware("auth");
-    // }
+    public function __construct()
+    {
+        $this->middleware("auth");
+    }
 
     public function index()
     {
-        $raw=DB::select("SELECT p.*, a.* FROM personas AS p
-        INNER JOIN areas a ON a.area_Id=p.area_id
-        ORDER BY p.personasId ASC");
-        #var_dump($raw);
-        //return view("list",compact("raw"));  <- VISTA SIMPLE
-        return view("Personas.main",compact("raw"));
+        $pers=DB::table("personas")
+        ->join("areas","areas.area_Id", "=", "personas.area_id")
+        ->select("personas.*","areas.*")
+        ->orderBy("personas.personasId", "ASC")
+        ->get();
+        #var_dump($pers);
+        //return view("list",compact("pers"));  -----VISTA SIMPLE
+        return view("Personas.main",compact("pers"));
     }
 
     /**

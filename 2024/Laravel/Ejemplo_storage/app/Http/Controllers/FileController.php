@@ -37,9 +37,9 @@ class FileController extends Controller
 
         //$path = Storage::putFile("", $request->file('archivo'));
         //$path = Storage::putFileAs("", $request->file('archivo'), 'TEST.png');
-        $path = Storage::disk('public')->putFile('public', $request->file('archivo'));
+        $path = Storage::disk('public')->putFile('public', $request->file('archivo'));//'modelo' del tema storage
 
-       $newFile = new File();
+       $newFile = new File();//modelo, migracion 
        $newFile->filename = $name;
        $newFile->path = $path;
        $newFile->userId = 1;

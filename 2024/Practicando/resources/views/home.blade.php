@@ -1,3 +1,4 @@
+{{-- HEREDA de layaouts  --}}
 @extends('layouts.app')
 
 @section('content')
